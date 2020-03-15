@@ -9,6 +9,8 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
+        - name: Checkout
+          uses: actions/checkout@v2.0.0
         - name: Deploy to staging server
           uses: Pendect/action-rsyncer@v1.1.0
           env:
