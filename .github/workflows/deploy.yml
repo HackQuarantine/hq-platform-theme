@@ -16,7 +16,7 @@ jobs:
           env:
               DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
           with:
-              flags: "-rltDzv --chown www-data:www-data --chmod=D666,F755"
+              flags: "-rltDzv --chown www-data:www-data --chmod=F666,D755"
               options: ""
               src: "dist/"
               dest: ${{ secrets.DEST }}
