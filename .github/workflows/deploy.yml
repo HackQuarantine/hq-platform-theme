@@ -1,0 +1,20 @@
+name: Deploy
+on:
+    push:
+        branches:
+            - master
+    repository_dispatch:
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Deploy to staging server
+          uses: easingthemes/ssh-deploy@v2.0.7
+          env:
+              SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+              ARGS: "-rltDzv --chown www-data:www-data --chmod=D666,F755"
+              SOURCE: "dist/"
+              REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+              REMOTE_USER: ${{ secrets.REMOTE_USER }}
+              TARGET: ${{ secrets.REMOTE_TARGET }}
