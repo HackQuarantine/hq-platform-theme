@@ -17,6 +17,6 @@ jobs:
               DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
           with:
               flags: "-rltDzv"
-              options: '--rsync-path="sudo rsync" --chown www-data:www-data'
+              options: '--rsync-path="sudo rsync" --chown=www-data:www-data'
               src: "dist/"
               dest: ${{ secrets.DEST }}
